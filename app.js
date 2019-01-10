@@ -17,7 +17,7 @@ $button.addEventListener("click", function makeCalculation(e){
             alert("ERROR, you must enter a number and not leave the fields empty!")
 
         }else if($tailWind.toString().length>5 || $yourSpeed.toString().length>5){
-            alert("ERROR, speed is too high for any commercial or sport aircraft")
+            alert("ERROR, speed is too high for any commercial or sport aircraft, please enter a speed of 5 digits or less in length! Thank you!")
         }else{
             let userInput = prompt("Is this a Tailwind or Headwind?\nEnter 1 for TAILWIND\nEnter 2 for HEADWIND")
             let $finalSpeed=0;
