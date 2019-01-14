@@ -1,6 +1,7 @@
 const $button = document.getElementById("calcButton");
 const $mphButton = document.getElementById("mphButton");
 const $finalResult = document.getElementById("finalResult");
+const $travelTime = document.getElementById("calcDistance");
 
 
 $button.addEventListener("click", function makeCalculation(e){
@@ -11,8 +12,8 @@ $button.addEventListener("click", function makeCalculation(e){
     
 
 
-        if(isNaN($tailWind) || isNaN($yourSpeed)){
-            alert("ERROR, please enter a number in knots! ");
+        if(isNaN($tailWind) || isNaN($yourSpeed) || $tailWind<0 || $yourSpeed <0){
+            alert("ERROR, please enter a positive number in knots! ");
         }else if($yourSpeed=="" || $tailWind ==""){
             alert("ERROR, you must enter a number and not leave the fields empty!")
 
@@ -27,10 +28,12 @@ $button.addEventListener("click", function makeCalculation(e){
                 $finalSpeed = parseInt($tailWind) + parseInt($yourSpeed);
                 $finalResult.innerHTML = "Your ground speed with a tailwind in knots: " + $finalSpeed + " kts";
                 calcNewSpeed($finalSpeed);
+                calcArrivalTime($finalSpeed);
             }else if(userInput==2){
                 $finalSpeed = parseInt($yourSpeed) - parseInt($tailWind);
                 $finalResult.innerHTML = "Your ground speed with a headwind in knots: " + $finalSpeed + " kts";
                 calcNewSpeed($finalSpeed);
+                calcArrivalTime($finalSpeed);
             }else{
                 alert("ERROR, please enter a 1 or 2 for wind direction");
             }
@@ -58,6 +61,27 @@ function calcNewSpeed(finalSpeed){
 
 
 
+
+}
+
+function calcArrivalTime(finalSpeed){
+    $travelTime.addEventListener("click", function(e){
+
+        const $distance = document.getElementsByClassName("distance")[0].value;
+
+        let travelTime = $distance/finalSpeed;
+        const $displayTime = document.getElementById("finalTime");
+
+
+        if($distance <0 || $distance>100000){
+            alert("It is impossible to travel that distance, please enter a value greater than 0 and less than 100k miles!")
+        }else{
+            $displayTime.innerHTML= "Estimated Flight time is: " + travelTime.toFixed(2) +" hours"
+
+        }
+        document.getElementsByClassName("distance")[0].value=""
+        
+    })
 
 }
 
