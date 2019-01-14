@@ -82,7 +82,7 @@ function calcArrivalTime(finalSpeed){
         document.getElementsByClassName("distance")[0].value=""
         
     })
-
+    
 }
 
 
