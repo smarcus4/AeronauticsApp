@@ -69,7 +69,7 @@ function calcArrivalTime(finalSpeed){
 
         const $distance = document.getElementsByClassName("distance")[0].value;
 
-        let travelTime = $distance/finalSpeed;
+        let travelTime = $distance/(finalSpeed*1.151); //convert speed to mph for formula to get proper time using miles and mph.
         const $displayTime = document.getElementById("finalTime");
 
 
